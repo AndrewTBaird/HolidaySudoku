@@ -34,14 +34,32 @@ class Solver
     values = []
 
     9.times do |index|
-      if  @board[row][index].length == 1 && !@board[row][index][0].nil?
-        values = @board[row][index][0]
+      if @board[row][index].length == 1 && !@board[row][index][0].nil?
+        values << @board[row][index][0]
       end
     end
 
     values
   end
 
+  def found_nonet_values(row, column)
+    values = []
+    row_nonet = row / 3
+    column_nonet = column / 3
+
+    3.times do |i|
+      3.times do |j|
+        board_value = @board[row_nonet + i][column_nonet + j]
+
+        if board_value.length == 1 && !board_value[0].nil?
+          values << board_value
+        end
+      end
+    end
+
+    values
+  end
+  
 end
 
 solver = Solver.new
