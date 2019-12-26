@@ -38,8 +38,10 @@ class Sudoku
     9.times do |i|
       9.times do |j|
         formatted_board += (@board[i][j][0].to_s + " ")
+        formatted_board += "| " if j%3 == 2
       end
-      formatted_board += "\n"
+      formatted_board += "\n" if i%3 != 2
+      formatted_board += "\n- - - - - - - - - - -\n" if i%3 == 2
     end
 
     formatted_board
@@ -108,7 +110,7 @@ end
 
 #sets of sudoku puzzles can be found at https://www.kaggle.com/bryanpark/sudoku
 
-board_string = '004300209005009001070060043006002087190007400050083000600000105003508690042910300'
+board_string = '107008000650100000300060072060030250480009700001407009000000800003980015040203060'
 sudoku = Sudoku.new(board_string)
 
 sudoku.solve
