@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sudoku.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="71" column="21" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="21" />
+            <state relative-caret-position="480">
+              <caret line="33" column="27" lean-forward="true" selection-end-line="77" />
             </state>
           </provider>
         </entry>
@@ -114,12 +114,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577206195230</updated>
-      <workItem from="1577206197732" duration="6437000" />
+      <workItem from="1577206197732" duration="7027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6437000" />
+    <option name="totallyTimeSpent" value="7027000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="840" height="947" extended-state="0" />
@@ -159,8 +159,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sudoku.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="71" column="21" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="21" />
+        <state relative-caret-position="480">
+          <caret line="33" column="27" lean-forward="true" selection-end-line="77" />
         </state>
       </provider>
     </entry>

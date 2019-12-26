@@ -8,15 +8,15 @@ class Sudoku
   end
 
   def possible_values_for_cell(row, column)
-    found_values = found_column_values(column) &&
-      found_row_values(row) &&
+    found_values = found_column_values(column) |
+      found_row_values(row) |
       found_nonet_values(row, column)
 
     POSSIBLE_VALUES - found_values
   end
 
 
-  private
+  # private
 
 
   def found_column_values(column)
@@ -72,4 +72,6 @@ sudoku.board[5] = [[2], [nil], [4], [nil], [1], [6], [nil], [nil], [nil]]
 sudoku.board[6] = [[5], [nil], [nil], [nil], [nil], [3], [7], [2], [8]]
 sudoku.board[7] = [[6], [nil], [2], [8], [9], [4], [nil], [3], [nil]]
 sudoku.board[8] = [[8], [3], [1], [5], [2], [nil], [nil], [4], [nil]]
+
+sudoku.possible_values_for_cell(0, 0)
 
