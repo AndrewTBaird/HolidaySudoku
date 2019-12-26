@@ -90,5 +90,5 @@ sudoku.board[6] = [[4], [nil], [6], [nil], [7], [5], [nil], [3], [2]]
 sudoku.board[7] = [[nil], [1], [nil], [nil], [nil], [nil], [7], [nil], [5]]
 sudoku.board[8] = [[nil], [nil], [3], [nil], [nil], [nil], [1], [9], [6]]
 
-sudoku.possible_values_for_cell(0, 0)
+sudoku.solve
 
