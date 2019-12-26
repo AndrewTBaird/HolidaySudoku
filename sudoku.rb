@@ -7,6 +7,18 @@ class Sudoku
     @board = Array.new(9){Array.new(9){Array.new(1)}}
   end
 
+  def solve
+    9.times do |i|
+      9.times do |j|
+        unless solved_cell?(i, j)
+          board[i][j] = possible_values_for_cell(i, j)
+
+          solve if solved_cell?(i, j)
+        end
+      end
+    end
+  end
+
   def possible_values_for_cell(row, column)
     found_values = found_column_values(column) |
       found_row_values(row) |
@@ -23,7 +35,7 @@ class Sudoku
     values = []
 
     9.times do |index|
-      if @board[index][column].length == 1 && !@board[index][column][0].nil?
+      if solved_cell?(index, column)
         values << @board[index][column][0]
       end
     end
@@ -35,7 +47,7 @@ class Sudoku
     values = []
 
     9.times do |index|
-      if @board[row][index].length == 1 && !@board[row][index][0].nil?
+      if solved_cell?(row, index)
         values << @board[row][index][0]
       end
     end
@@ -60,18 +72,23 @@ class Sudoku
 
     values
   end
+
+
+  def solved_cell?(row, column)
+    @board[row][column].length == 1 && !@board[row][column][0].nil?
+  end
 end
 
 sudoku = Sudoku.new
-sudoku.board[0] = [[4], [nil], [nil], [nil], [nil], [nil], [nil], [6], [9]]
-sudoku.board[1] = [[nil], [nil], [3], [2], [nil], [nil], [nil], [8], [1]]
-sudoku.board[2] = [[nil], [nil], [nil], [6], [nil], [nil], [4], [nil], [nil]]
-sudoku.board[3] = [[1], [5], [7], [nil], [nil], [nil], [6], [9], [nil]]
-sudoku.board[4] = [[nil], [nil], [nil], [nil], [7], [nil], [8], [nil], [2]]
-sudoku.board[5] = [[2], [nil], [4], [nil], [1], [6], [nil], [nil], [nil]]
-sudoku.board[6] = [[5], [nil], [nil], [nil], [nil], [3], [7], [2], [8]]
-sudoku.board[7] = [[6], [nil], [2], [8], [9], [4], [nil], [3], [nil]]
-sudoku.board[8] = [[8], [3], [1], [5], [2], [nil], [nil], [4], [nil]]
+sudoku.board[0] = [[5], [nil], [1], [6], [nil], [7], [9], [nil], [nil]]
+sudoku.board[1] = [[nil], [nil], [9], [nil], [nil], [3], [2], [5], [nil]]
+sudoku.board[2] = [[8], [2], [7], [nil], [9], [nil], [nil], [nil], [nil]]
+sudoku.board[3] = [[9], [nil], [2], [nil], [5], [1], [3], [7], [nil]]
+sudoku.board[4] = [[3], [nil], [nil], [9], [8], [nil], [nil], [nil], [nil]]
+sudoku.board[5] = [[nil], [nil], [5], [7], [nil], [6], [nil], [nil], [nil]]
+sudoku.board[6] = [[4], [nil], [6], [nil], [7], [5], [nil], [3], [2]]
+sudoku.board[7] = [[nil], [1], [nil], [nil], [nil], [nil], [7], [nil], [5]]
+sudoku.board[8] = [[nil], [nil], [3], [nil], [nil], [nil], [1], [9], [6]]
 
 sudoku.possible_values_for_cell(0, 0)
 
