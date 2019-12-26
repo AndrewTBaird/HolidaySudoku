@@ -3,8 +3,8 @@ class Sudoku
 
   POSSIBLE_VALUES = [1, 2, 3, 4, 5, 6, 7, 8, 9].freeze
 
-  def initialize
-    @board = Array.new(9){Array.new(9){Array.new(1)}}
+  def initialize(board_string)
+    @board = build_board_from_board_string(board_string)
   end
 
   def solve
@@ -19,8 +19,35 @@ class Sudoku
     end
   end
 
+  def build_board_from_board_string(board_string)
+    board = Array.new(9){Array.new(9){Array.new(1)}}
+
+    board_string.split('').each_with_index do |number_string, index|
+      number = number_string.to_i
+      unless number == 0
+        board[index / 9][index % 9][0] = number
+      end
+    end
+
+    board
+  end
+
+  def print_board
+    formatted_board = ""
+
+    9.times do |i|
+      9.times do |j|
+        formatted_board += (@board[i][j][0].to_s + " ")
+      end
+      formatted_board += "\n"
+    end
+
+    formatted_board
+  end
+
 
   private
+
 
   def possible_values_for_cell(row, column)
     found_values = found_column_values(column) |
@@ -79,16 +106,12 @@ class Sudoku
   end
 end
 
-sudoku = Sudoku.new
-sudoku.board[0] = [[5], [nil], [1], [6], [nil], [7], [9], [nil], [nil]]
-sudoku.board[1] = [[nil], [nil], [9], [nil], [nil], [3], [2], [5], [nil]]
-sudoku.board[2] = [[8], [2], [7], [nil], [9], [nil], [nil], [nil], [nil]]
-sudoku.board[3] = [[9], [nil], [2], [nil], [5], [1], [3], [7], [nil]]
-sudoku.board[4] = [[3], [nil], [nil], [9], [8], [nil], [nil], [nil], [nil]]
-sudoku.board[5] = [[nil], [nil], [5], [7], [nil], [6], [nil], [nil], [nil]]
-sudoku.board[6] = [[4], [nil], [6], [nil], [7], [5], [nil], [3], [2]]
-sudoku.board[7] = [[nil], [1], [nil], [nil], [nil], [nil], [7], [nil], [5]]
-sudoku.board[8] = [[nil], [nil], [3], [nil], [nil], [nil], [1], [9], [6]]
+#sets of sudoku puzzles can be found at https://www.kaggle.com/bryanpark/sudoku
+
+board_string = '004300209005009001070060043006002087190007400050083000600000105003508690042910300'
+sudoku = Sudoku.new(board_string)
 
 sudoku.solve
+
+print sudoku.print_board
 
