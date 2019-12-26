@@ -19,6 +19,9 @@ class Sudoku
     end
   end
 
+
+  private
+
   def possible_values_for_cell(row, column)
     found_values = found_column_values(column) |
       found_row_values(row) |
@@ -26,9 +29,6 @@ class Sudoku
 
     POSSIBLE_VALUES - found_values
   end
-
-
-  # private
 
 
   def found_column_values(column)
